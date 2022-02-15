@@ -8,18 +8,92 @@ function show(){
 
 const deletes = document.querySelectorAll('.delete')
 const lists = document.getElementsByClassName('items')
-const prices = document.getElementsByClassName('price-number')
+
 
 for(const delet of deletes){
  delet.addEventListener('click',function(){
 
    document.getElementById('list').removeChild(delet.parentNode.parentNode.parentNode.parentNode)
    // console.log(delet.parentNode.parentNode.parentNode.parentNode)
+   totaladd()
 
  })
 }
 
 
+
+///////////////////  plus button/////////////
+
+  let plusbtn =document.getElementsByClassName('plus-value')
+for(const plus of plusbtn){
+  plus.addEventListener('click',function(e){
+  let inputvalue = parseFloat(e.target.parentNode.children[1].value)
+  
+  
+
+ if ( inputvalue < 5) {
+  //  adding item numbr
+  
+    inputvalue = inputvalue + 1;
+ }
+ e.target.parentNode.children[1].value = inputvalue
+let priceBox = e.target.parentNode.parentNode.children[1].children[0]
+ let priceBoxNumber = parseFloat(priceBox.innerText)
+ const lists = document.getElementById('list').firstChild.parentNode.children[0]
+ const listIndex = e.target.parentNode.parentNode.parentNode
+  
+ let totalItemPrice = 0
+ if (lists== listIndex) {
+  totalItemPrice = inputvalue * 180
+  
+ }else{
+  totalItemPrice = inputvalue * 210
+ 
+ }
+ priceBox.innerText = totalItemPrice;
+  totaladd()
+  })
+}
+
+// negative button
+
+  let minusbtn =document.getElementsByClassName('minus-value')
+for(const plus of minusbtn){
+  plus.addEventListener('click',function(e){
+  let inputvalue = parseFloat(e.target.parentNode.children[1].value)
+ if (inputvalue > 1 ) {
+
+    inputvalue = inputvalue - 1;
+  }
+  e.target.parentNode.children[1].value = inputvalue
+ let priceBox = e.target.parentNode.parentNode.children[1].children[0]
+  let priceBoxNumber = parseFloat(priceBox.innerText)
+  const lists = document.getElementById('list').firstChild.parentNode.children[0]
+  const listIndex = e.target.parentNode.parentNode.parentNode
+   
+  let totalItemPrice = 0
+  if (lists== listIndex) {
+   totalItemPrice = inputvalue * 180
+   
+  }else{
+   totalItemPrice = inputvalue * 210
+  
+  }
+  priceBox.innerText = totalItemPrice;
+ totaladd()
+   })
+ }
+ 
+
+
+
+
+
+// total 
+
+function totaladd(){
+  
+const prices = document.getElementsByClassName('price-number')
 
 let numbers = 0;
 for(const price of prices){
@@ -30,6 +104,20 @@ for(const price of prices){
 const subtotal =  productTotal.innerText = numbers;
 const total = document.getElementById('total-price')
 const totalvalue = total.innerText = subtotal
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 document.getElementById('apply').addEventListener('click',function(){
