@@ -51,7 +51,7 @@ let priceBox = e.target.parentNode.parentNode.children[1].children[0]
  
  }
  priceBox.innerText = totalItemPrice;
-  totaladd()
+ totaladd()
   })
 }
 
@@ -80,15 +80,17 @@ for(const plus of minusbtn){
   
   }
   priceBox.innerText = totalItemPrice;
- totaladd()
+  totaladd()
    })
  }
  
 
 
 
-
-
+ const productTotal = document.getElementById('prodact-total')
+ let subtotal
+ const total = document.getElementById('total-price')
+ const totalvalue = total.innerText
 // total 
 
 function totaladd(){
@@ -100,36 +102,40 @@ for(const price of prices){
   const priceValue = parseFloat(price.innerText);
   numbers = numbers + priceValue
 
-}const productTotal = document.getElementById('prodact-total')
-const subtotal =  productTotal.innerText = numbers;
-const total = document.getElementById('total-price')
-const totalvalue = total.innerText = subtotal
 }
+subtotal =  productTotal.innerText = numbers;
+totalvalue = total.innerText = subtotal
 
 
 
-
-
-
-
-
-
-
+}
 
 
 
 
 
 document.getElementById('apply').addEventListener('click',function(){
+  
 
-
-   const promo = document.getElementById('input-promo').value
+  const promo = document.getElementById('input-promo').value
 if (promo == 'hardwork') {
-  const discunt =  parseFloat(totalvalue) *20/100
-  total.innerText = subtotal - discunt
-  document.getElementById('input-promo').value = ''
-  alert('you have use promo code get ready to 20% discunt')
+ const discunt =  parseFloat(totalvalue) *20/100
+ total.innerText = subtotal - discunt
+ document.getElementById('input-promo').value = ''
+ alert('you have use promo code get ready to 20% discunt')
 }else{
-   alert('warning! promo code can not found')
+  alert('warning! promo code can not found')
 }
 })
+
+
+
+
+
+
+
+
+
+  
+
+
