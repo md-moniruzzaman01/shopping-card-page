@@ -4,7 +4,7 @@ function show(){
 
 
 
-
+// ///////////delete card//////////////
 
 const deletes = document.querySelectorAll('.delete')
 const lists = document.getElementsByClassName('items')
@@ -14,7 +14,7 @@ for(const delet of deletes){
  delet.addEventListener('click',function(){
 
    document.getElementById('list').removeChild(delet.parentNode.parentNode.parentNode.parentNode)
-   // console.log(delet.parentNode.parentNode.parentNode.parentNode)
+  
    totaladd()
 
  })
@@ -35,25 +35,33 @@ for(const plus of plusbtn){
   //  adding item numbr
   
     inputvalue = inputvalue + 1;
- }
- e.target.parentNode.children[1].value = inputvalue
-let priceBox = e.target.parentNode.parentNode.children[1].children[0]
- let priceBoxNumber = parseFloat(priceBox.innerText)
- const lists = document.getElementById('list').firstChild.parentNode.children[0]
- const listIndex = e.target.parentNode.parentNode.parentNode
+  }
+  e.target.parentNode.children[1].value = inputvalue
+ let priceBox = e.target.parentNode.parentNode.children[1].children[0]
+  let priceBoxNumber = parseFloat(priceBox.innerText)
+  const lists = document.getElementById('list').firstChild.parentNode
+  const listIndex = e.target.parentNode.parentNode.parentNode
+   
+  let totalItemPrice = 0
+  if (lists.children[0]== listIndex) {
+   totalItemPrice = inputvalue * 180
+   
+  }else if(lists.children[1]== listIndex){
+   totalItemPrice = inputvalue * 150
   
- let totalItemPrice = 0
- if (lists== listIndex) {
-  totalItemPrice = inputvalue * 180
   
- }else{
-  totalItemPrice = inputvalue * 210
- 
+  }else if(lists.children[2]== listIndex){
+   totalItemPrice = inputvalue * 350
+  
+  
+  }else if(lists.children[3]== listIndex){
+   totalItemPrice = inputvalue * 200
+  
+  }
+  priceBox.innerText = totalItemPrice;
+  totaladd()
+   })
  }
- priceBox.innerText = totalItemPrice;
- totaladd()
-  })
-}
 
 // negative button
 
@@ -92,13 +100,13 @@ for(const plus of minusbtn){
    })
  }
  
-
+// total calculate
 
 
  const productTotal = document.getElementById('prodact-total')
  let subtotal
  const total = document.getElementById('total-price')
- const totalvalue = total.innerText
+ let totalvalue = total.innerText
 // total 
 
 function totaladd(){
@@ -112,10 +120,7 @@ for(const price of prices){
 
 }
 subtotal =  productTotal.innerText = numbers;
-totalvalue = total.innerText = subtotal
-
-
-
+totalvalue = total.innerText = subtotal;;
 }
 
 totaladd()
