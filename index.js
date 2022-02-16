@@ -68,15 +68,23 @@ for(const plus of minusbtn){
   e.target.parentNode.children[1].value = inputvalue
  let priceBox = e.target.parentNode.parentNode.children[1].children[0]
   let priceBoxNumber = parseFloat(priceBox.innerText)
-  const lists = document.getElementById('list').firstChild.parentNode.children[0]
+  const lists = document.getElementById('list').firstChild.parentNode
   const listIndex = e.target.parentNode.parentNode.parentNode
    
   let totalItemPrice = 0
-  if (lists== listIndex) {
+  if (lists.children[0]== listIndex) {
    totalItemPrice = inputvalue * 180
    
-  }else{
-   totalItemPrice = inputvalue * 210
+  }else if(lists.children[1]== listIndex){
+   totalItemPrice = inputvalue * 150
+  
+  
+  }else if(lists.children[2]== listIndex){
+   totalItemPrice = inputvalue * 350
+  
+  
+  }else if(lists.children[3]== listIndex){
+   totalItemPrice = inputvalue * 200
   
   }
   priceBox.innerText = totalItemPrice;
@@ -110,7 +118,7 @@ totalvalue = total.innerText = subtotal
 
 }
 
-
+totaladd()
 
 
 
